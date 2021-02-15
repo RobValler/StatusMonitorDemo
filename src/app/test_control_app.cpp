@@ -30,10 +30,23 @@ void CTestControlApp::Process()
 {
     // check if there is a system error
     // false means no error
-    bool result = m_pModuleList->m_pEventManager->CheckForError();
+    int result = m_pModuleList->m_pEventManager->CheckForError();
 
-    if(!result)
-        std::cout << "NO ERROR" << std::endl;
-    else
-        std::cout << "ERROR" << std::endl;
+    switch(result)
+    {
+        case ESystemErrorIDList::E_LOW:
+            std::cout << "LOW ERROR" << std::endl;
+            break;
+        case ESystemErrorIDList::E_MEDIUM:
+            std::cout << "MEDIUM ERROR" << std::endl;
+            break;
+        case ESystemErrorIDList::E_HIGH:
+            std::cout << "HIGH ERROR" << std::endl;
+            break;
+        case ESystemErrorIDList::E_NONE:
+        default:
+            std::cout << "NO ERROR" << std::endl;
+            break;
+    }
+
 }

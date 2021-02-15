@@ -9,8 +9,8 @@
 #include "event_id.h"
 
 std::vector<SErrorCondition> errorList = {
-        {E_Temp_warning_flag},
-        {E_Temp_error_flag}
+        {E_Temp_warning_flag,   E_MEDIUM},
+        {E_Temp_error_flag,     E_HIGH}
 };
 
 CEventManager::CEventManager(std::shared_ptr<SModuleList> list)
