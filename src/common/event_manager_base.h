@@ -6,7 +6,7 @@
 #include <memory>
 
 
-
+// system error codes
 enum ESystemErrorIDList : int
 {
     E_NONE = 0,
@@ -15,12 +15,12 @@ enum ESystemErrorIDList : int
     E_HIGH
 };
 
-
+// Event table structure
 struct SErrorCondition
 {
     int error_ID;
     int system_error_ID;
-    // more to come, etc.
+    // etc.
 };
 
 class CStatusMonitor;
@@ -32,7 +32,6 @@ public:
     ~CEventManagerBase()=default;
 
     void ImportErrorRules(std::vector<SErrorCondition> errorRules);
-    void RegisterStatusMonitor(std::shared_ptr<CStatusMonitor> statusMonitor);
     int CheckForError();
 
 protected:

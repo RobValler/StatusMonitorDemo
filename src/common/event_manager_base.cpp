@@ -7,12 +7,9 @@
 
 void CEventManagerBase::ImportErrorRules(std::vector<SErrorCondition> errorRules)
 {
-    m_ErrorRules = errorRules;
-}
+    // This function may be more complex if the import source is a differenct format.
 
-void CEventManagerBase::RegisterStatusMonitor(std::shared_ptr<CStatusMonitor> statusMonitor)
-{
-    m_pStatusMonitor = statusMonitor;
+    m_ErrorRules = errorRules;
 }
 
 int CEventManagerBase::CheckForError()
@@ -27,6 +24,7 @@ int CEventManagerBase::CheckForError()
     {
         if( m_pStatusMonitor->GetEvent(it.error_ID) ){
 
+            // only increment the system error code if the new code is higher
             if(system_error < it.system_error_ID)
                 system_error = it.system_error_ID;
         }
